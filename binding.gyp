@@ -17,13 +17,11 @@
       ],
       "xcode_settings": {
         "OTHER_CFLAGS": [
-          "-maes",
           "-Ofast",
           "-fexceptions"
         ]
       },
       "cflags": [
-        "-maes",
         "-Ofast",
         "-fexceptions"
       ],
