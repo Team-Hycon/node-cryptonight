@@ -10,18 +10,20 @@
             'OS=="win"', 
               {
                 'include_dirs': [
-                  "C:/boost_1_62_0" 
+                  "C:/boost" 
                 ] 
               }
           ] 
       ],
       "xcode_settings": {
         "OTHER_CFLAGS": [
+          "-maes",
           "-Ofast",
           "-fexceptions"
         ]
       },
       "cflags": [
+        "-maes",
         "-Ofast",
         "-fexceptions"
       ],

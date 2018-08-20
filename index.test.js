@@ -30,18 +30,10 @@
 
 const cryptonight = require('./')
 
-test('async hash of empty string', done => {
-  return cryptonight.asyncHash(Buffer.from(''), data => {
+test('async hash of string', done => {
+  return cryptonight.asyncHash(Buffer.from('28398b837893ce78c66dc326528517c801cdcb51bdfb0838a835088e57e5bbf4e93999c5c62b23af2c2656162408643292206b3f8517bb1fe1da9d15a3d9c2abee010000b5020000', 16), data => {
     expect(data.toString('hex'))
-      .toBe('eb14e8a833fac6fe9a43b57b336789c46ffe93f2868452240720607b14387e11')
-    done()
-  })
-})
-
-test('async hash of test string', done => {
-  return cryptonight.asyncHash(Buffer.from('This is a test'), data => {
-    expect(data.toString('hex'))
-      .toBe('a084f01d1437a09c6985401b60d43554ae105802c5f5d8a9b3253649c0be6605')
+      .toBe('55a680f4e74e717c7b6560ced92d240f1e10b2957dc80d70520ca31280bfd65e')
     done()
   })
 })
@@ -61,14 +53,9 @@ test('extra arguments throws exception', () => {
     .toThrow(/buffer/)
 })
 
-test('sync hash of empty string', () => {
-  expect(cryptonight.hash(Buffer.from('')).toString('hex'))
-    .toBe('eb14e8a833fac6fe9a43b57b336789c46ffe93f2868452240720607b14387e11')
-})
-
 test('sync hash of test string', () => {
-  expect(cryptonight.hash(Buffer.from('This is a test')).toString('hex'))
-    .toBe('a084f01d1437a09c6985401b60d43554ae105802c5f5d8a9b3253649c0be6605')
+  expect(cryptonight.hash(Buffer.from('28398b837893ce78c66dc326528517c801cdcb51bdfb0838a835088e57e5bbf4e93999c5c62b23af2c2656162408643292206b3f8517bb1fe1da9d15a3d9c2abee010000b5020000')).toString('hex'))
+    .toBe('55a680f4e74e717c7b6560ced92d240f1e10b2957dc80d70520ca31280bfd65e')
 })
 
 test('sync invalid argument throws exception', () => {
