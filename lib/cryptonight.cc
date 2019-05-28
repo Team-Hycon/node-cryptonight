@@ -40,7 +40,7 @@ NAN_METHOD(Hash) {
 	if (info.Length() != 1)
 		return Nan::ThrowError("Argument must be a buffer");
 	
-	Local<Object> buf = info[0]->ToObject();
+	Local<Object> buf = info[0]->ToObject(Nan::GetCurrentContext()).ToLocalChecked();
 
 	if (!Buffer::HasInstance(buf))
 		return Nan::ThrowError("Argument must be a buffer");
@@ -55,7 +55,7 @@ NAN_METHOD(Hash) {
 class CnWorker : public AsyncWorker {
 public:
 	CnWorker(Callback *callback, char *data, int length)
-		 : AsyncWorker(callback), data(data), length(length) {}
+	: AsyncWorker(callback), data(data), length(length) {}
 	~CnWorker() {}
 
 	void Execute() {
@@ -80,7 +80,7 @@ NAN_METHOD(AsyncHash) {
 	if (info.Length() != 2)
 		return Nan::ThrowError("Arguments must be a buffer and a callback");
 	
-	Local<Object> buf = info[0]->ToObject();
+	Local<Object> buf = info[0]->ToObject(Nan::GetCurrentContext()).ToLocalChecked();
 
 	if (!Buffer::HasInstance(buf))
 		return Nan::ThrowError("Arguments must be a buffer and a callback");
